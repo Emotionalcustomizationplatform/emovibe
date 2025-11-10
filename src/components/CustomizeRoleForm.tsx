@@ -1,30 +1,44 @@
-import { Box, VStack, Input, Select, Button, Textarea } from "@chakra-ui/react";
+"use client";
 import { useState } from "react";
+import { VStack, Input, Select, Textarea } from "@chakra-ui/react";
+import ButtonPrimary from "./ui/ButtonPrimary";
+import { supabase } from "@/lib/supabase";
 
 export default function CustomizeRoleForm() {
   const [name, setName] = useState("");
-  const [gender, setGender] = useState("");
-  const [personality, setPersonality] = useState("");
+  const [gender, setGender] = useState("female");
+  const [personality, setPersonality] = useState("friendly");
   const [instructions, setInstructions] = useState("");
 
-  const handleSubmit = () => {
-    alert(`AI Role Created!\nName: ${name}\nGender: ${gender}\nPersonality: ${personality}`);
-    // 在这里可以调用 API 存储定制信息
+  const user = supabase.auth.user();
+
+  const handleSubmit = async () => {
+    if (!user) return alert("Please login first!");
+    const res = await fetch("/api/ai-role", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: user.id, name, gender, personality, instructions })
+    });
+    const data = await res.json();
+    alert(`AI Role "${data.name}" created successfully!`);
+    window.location.href = "/chat";
   };
 
   return (
-    <Box maxW="600px" mx="auto" py={12} px={6} borderRadius="md" bg="gray.50">
-      <VStack spacing={4}>
-        <Input placeholder="Role Name" value={name} onChange={e => setName(e.target.value)} />
-        <Select placeholder="Select Gender" value={gender} onChange={e => setGender(e.target.value)}>
-          <option value="female">Female</option>
-          <option value="male">Male</option>
-          <option value="nonbinary">Non-binary</option>
-        </Select>
-        <Input placeholder="Personality Traits" value={personality} onChange={e => setPersonality(e.target.value)} />
-        <Textarea placeholder="Special Instructions / Requests" value={instructions} onChange={e => setInstructions(e.target.value)} />
-        <Button colorScheme="teal" onClick={handleSubmit}>Create Role</Button>
-      </VStack>
-    </Box>
+    <VStack spacing={4} align="stretch">
+      <Input placeholder="AI Name" value={name} onChange={e => setName(e.target.value)} />
+      <Select value={gender} onChange={e => setGender(e.target.value)}>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="other">Other</option>
+      </Select>
+      <Select value={personality} onChange={e => setPersonality(e.target.value)}>
+        <option value="friendly">Friendly</option>
+        <option value="serious">Serious</option>
+        <option value="funny">Funny</option>
+      </Select>
+      <Textarea placeholder="Special instructions for AI behavior" value={instructions} onChange={e => setInstructions(e.target.value)} />
+      <ButtonPrimary onClick={handleSubmit}>Create AI Role</ButtonPrimary>
+    </VStack>
   );
 }
