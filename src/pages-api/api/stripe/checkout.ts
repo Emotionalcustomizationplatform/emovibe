@@ -1,26 +1,25 @@
+// src/pages-api/api/stripe/checkout.ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import stripe from "@/lib/stripe.server";
+import Stripe from "stripe";
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2024-11-19" });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") return res.status(405).end();
-  const { customerEmail } = req.body;
+  const { email } = req.body;
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
       payment_method_types: ["card"],
-      billing_address_collection: "auto",
-      line_items: [
-        {
-          price_data: {
-            currency: "usd",
-            product_data: { name: "EmoVibe Weekly Membership" },
-            recurring: { interval: "week" },
-            unit_amount: 9900 // $99.00
-          },
-          quantity: 1
-        }
-      ],
-      customer_email: customerEmail,
+      customer_email: email,
+      line_items: [{
+        price_data: {
+          product_data: { name: "EmoVibe Weekly Membership" },
+          unit_amount: 9900,
+          currency: "usd",
+          recurring: { interval: "week" }
+        },
+        quantity: 1
+      }],
       success_url: `${process.env.NEXT_PUBLIC_APP_URL}/?checkout=success`,
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/?checkout=cancel`
     });
