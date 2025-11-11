@@ -1,86 +1,20 @@
-/* 🌈 EmoVibe Global Styles (No Images, Fully Vercel Safe) */
-
-* {
-  margin: 0;
+html, body {
   padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  background: linear-gradient(180deg, #f5f7fa, #dfe9f3);
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(120deg, #f0f4ff, #e0e7ff);
   min-height: 100vh;
-  color: #222;
 }
 
-header {
-  background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  padding: 1.2rem 0;
-  text-align: center;
-}
-
-header h1 {
-  color: #3366cc;
-  font-size: 1.8rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.container {
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 0;
-}
-
-.card {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  padding: 2rem;
-  margin-top: 2rem;
-  text-align: center;
-}
-
-.card h2 {
-  color: #333;
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-}
-
-.card p {
-  color: #555;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.button {
-  background-color: #3366cc;
+button {
+  background: #4f46e5;
   color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 6px;
+  padding: 10px 20px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.button:hover {
-  background-color: #2851a3;
-}
-
-footer {
-  margin-top: 3rem;
-  padding: 1rem 0;
-  text-align: center;
-  color: #888;
-  font-size: 0.9rem;
-}
-
-.hollow-bg {
-  background-color: #f3f4f6; /* used for the "tree hole" (no image) */
-  padding: 3rem 1rem;
-  border-radius: 12px;
-  text-align: center;
+button:hover {
+  background: #4338ca;
 }
