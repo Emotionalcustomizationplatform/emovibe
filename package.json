@@ -1,4 +1,3 @@
-
 {
   "name": "emovibe",
   "version": "1.0.0",
@@ -10,26 +9,29 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.4",
-    "axios": "^1.7.4",
     "next": "14.2.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-icons": "^5.2.1",
-    "openai": "^4.26.0",
-    "stripe": "^14.22.0",
-    "qrcode.react": "^4.0.1",
-    "wechatpay-node-v3": "^2.3.0",
-    "uuid": "^9.0.1",
-    "zustand": "^4.5.2",
-    "framer-motion": "^10.18.0",
-    "next-auth": "^4.24.7"
+    "@chakra-ui/react": "2.8.2",
+    "@emotion/react": "11.11.3",
+    "@emotion/styled": "11.11.0",
+    "framer-motion": "10.18.0",
+    "react-icons": "5.2.1",
+    "openai": "4.26.0",
+    "@supabase/supabase-js": "2.39.4",
+    "stripe": "14.22.0",
+    "wechatpay-node-v3": "2.1.6",
+    "axios": "1.7.4",
+    "uuid": "9.0.1",
+    "zustand": "4.5.2",
+    "qrcode.react": "4.0.1",
+    "next-auth": "4.24.7"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "10.4.19",
+    "postcss": "8.4.39",
+    "tailwindcss": "3.4.4",
     "eslint": "8.57.0",
-    "eslint-config-next": "14.2.3",
-    "postcss": "^8.4.39",
-    "tailwindcss": "^3.4.4"
+    "eslint-config-next": "14.2.3"
   }
 }
