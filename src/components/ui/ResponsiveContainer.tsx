@@ -1,6 +1,11 @@
-import { Box } from "@chakra-ui/react";
-import { ReactNode } from "react";
-
-export default function ResponsiveContainer({ children }: { children: ReactNode }) {
-  return <Box maxW="1100px" mx="auto" px={4}>{children}</Box>;
+export default function ResponsiveContainer({ children }: any) {
+  return (
+    <div style={{
+      maxWidth: 800,
+      margin: '0 auto',
+      padding: 20
+    }}>
+      {children}
+    </div>
+  );
 }
