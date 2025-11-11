@@ -1,37 +1,35 @@
+
 {
-  "name": "emovibe-chakra",
-  "version": "0.1.0",
+  "name": "emovibe",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 3000",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.7.0",
-    "@chakra-ui/icons": "^2.0.9",
-    "@emotion/react": "^11.11.0",
-    "@emotion/styled": "^11.11.0",
-    "@supabase/supabase-js": "^2.24.0",
-    "openai": "^4.10.0",
-    "stripe": "^12.0.0",
-    "next": "14.2.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "swr": "^2.1.0",
-    "axios": "^1.4.0",
-    "zod": "^3.22.2",
-    "prisma": "^5.10.1"
+    "@supabase/supabase-js": "^2.39.4",
+    "axios": "^1.7.4",
+    "next": "14.2.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-icons": "^5.2.1",
+    "openai": "^4.26.0",
+    "stripe": "^14.22.0",
+    "qrcode.react": "^4.0.1",
+    "wechatpay-node-v3": "^2.3.0",
+    "uuid": "^9.0.1",
+    "zustand": "^4.5.2",
+    "framer-motion": "^10.18.0",
+    "next-auth": "^4.24.7"
   },
   "devDependencies": {
-    "typescript": "^5.6.0",
-    "eslint": "8.44.0",
-    "prettier": "^2.8.0"
+    "autoprefixer": "^10.4.19",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4"
   }
-}
-"dependencies": {
-  "react-icons": "^4.11.0"
 }
