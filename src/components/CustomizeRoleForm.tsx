@@ -1,44 +1,28 @@
-"use client";
-import { useState } from "react";
-import { VStack, Input, Select, Textarea } from "@chakra-ui/react";
-import ButtonPrimary from "./ui/ButtonPrimary";
-import { supabase } from "@/lib/supabase";
+'use client';
+import { useState } from 'react';
 
-export default function CustomizeRoleForm() {
-  const [name, setName] = useState("");
-  const [gender, setGender] = useState("female");
-  const [personality, setPersonality] = useState("friendly");
-  const [instructions, setInstructions] = useState("");
+export default function CustomizeRoleForm({ onSubmit }: any) {
+  const [roleName, setRoleName] = useState('');
+  const [personality, setPersonality] = useState('');
+  const [style, setStyle] = useState('');
 
-  const user = supabase.auth.user();
-
-  const handleSubmit = async () => {
-    if (!user) return alert("Please login first!");
-    const res = await fetch("/api/ai-role", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user_id: user.id, name, gender, personality, instructions })
-    });
-    const data = await res.json();
-    alert(`AI Role "${data.name}" created successfully!`);
-    window.location.href = "/chat";
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    onSubmit({ roleName, personality, style });
   };
 
   return (
-    <VStack spacing={4} align="stretch">
-      <Input placeholder="AI Name" value={name} onChange={e => setName(e.target.value)} />
-      <Select value={gender} onChange={e => setGender(e.target.value)}>
-        <option value="female">Female</option>
-        <option value="male">Male</option>
-        <option value="other">Other</option>
-      </Select>
-      <Select value={personality} onChange={e => setPersonality(e.target.value)}>
-        <option value="friendly">Friendly</option>
-        <option value="serious">Serious</option>
-        <option value="funny">Funny</option>
-      </Select>
-      <Textarea placeholder="Special instructions for AI behavior" value={instructions} onChange={e => setInstructions(e.target.value)} />
-      <ButtonPrimary onClick={handleSubmit}>Create AI Role</ButtonPrimary>
-    </VStack>
+    <form onSubmit={handleSubmit}>
+      <label>Name</label>
+      <input value={roleName} onChange={(e) => setRoleName(e.target.value)} required />
+
+      <label>Personality</label>
+      <textarea value={personality} onChange={(e) => setPersonality(e.target.value)} />
+
+      <label>Style</label>
+      <input value={style} onChange={(e) => setStyle(e.target.value)} />
+
+      <button type="submit" style={{ marginTop: 10 }}>Save</button>
+    </form>
   );
 }
