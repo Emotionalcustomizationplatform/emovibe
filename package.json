@@ -32,3 +32,6 @@
     "prettier": "^2.8.0"
   }
 }
+"dependencies": {
+  "react-icons": "^4.11.0"
+}
