@@ -1,16 +1,16 @@
-import "./globals.css";
-import { Providers } from "@/components/ui/ToastProvider";
+import "../styles/globals.css";
+import { ChakraProvider } from "@chakra-ui/react";
 
 export const metadata = {
-  title: "EmoVibe - 情感陪聊平台",
-  description: "AI 与真人结合的情感陪伴网站",
+  title: "Emovibe - Emotional Companion Platform",
+  description: "AI and human emotional companionship platform",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh">
+    <html lang="en">
       <body>
-        <Providers>{children}</Providers>
+        <ChakraProvider>{children}</ChakraProvider>
       </body>
     </html>
   );
