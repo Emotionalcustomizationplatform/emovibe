@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function CustomizeRoleForm() {
   const [roleName, setRoleName] = useState('');
@@ -6,8 +7,15 @@ export default function CustomizeRoleForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`Role created: ${roleName}`);
-    // 这里可以调用 API 保存到 Supabase 或 OpenAI
+
+    try {
+      await axios.post('/api/ai-role', { roleName, description });
+      alert('Role created successfully!');
+      setRoleName('');
+      setDescription('');
+    } catch {
+      alert('Error saving role');
+    }
   };
 
   return (
