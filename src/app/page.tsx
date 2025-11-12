@@ -1,20 +1,11 @@
-import Link from 'next/link';
+import ProtectedChatRoom from '@/components/ProtectedChatRoom';
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <main style={{ padding: '2rem', textAlign: 'center' }}>
+    <main style={{ padding: '2rem' }}>
       <h1>Welcome to Emovibe</h1>
-      <p>Professional emotional chat platform.</p>
-      <div style={{ marginTop: '2rem' }}>
-        <Link href="/customize">
-          <button style={{ padding: '0.5rem 1rem' }}>Customize AI Role</button>
-        </Link>
-      </div>
-      <div style={{ marginTop: '1rem' }}>
-        <Link href="/chat">
-          <button style={{ padding: '0.5rem 1rem' }}>Go to Chat Room</button>
-        </Link>
-      </div>
+      <p>Your personal AI companion chat platform.</p>
+      <ProtectedChatRoom />
     </main>
   );
 }
