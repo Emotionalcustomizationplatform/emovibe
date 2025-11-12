@@ -1,28 +1,31 @@
-'use client';
 import { useState } from 'react';
 
-export default function CustomizeRoleForm({ onSubmit }: any) {
+export default function CustomizeRoleForm() {
   const [roleName, setRoleName] = useState('');
-  const [personality, setPersonality] = useState('');
-  const [style, setStyle] = useState('');
+  const [description, setDescription] = useState('');
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({ roleName, personality, style });
+    alert(`Role created: ${roleName}`);
+    // 这里可以调用 API 保存到 Supabase 或 OpenAI
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Name</label>
-      <input value={roleName} onChange={(e) => setRoleName(e.target.value)} required />
-
-      <label>Personality</label>
-      <textarea value={personality} onChange={(e) => setPersonality(e.target.value)} />
-
-      <label>Style</label>
-      <input value={style} onChange={(e) => setStyle(e.target.value)} />
-
-      <button type="submit" style={{ marginTop: 10 }}>Save</button>
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <input
+        type="text"
+        placeholder="Role Name"
+        value={roleName}
+        onChange={e => setRoleName(e.target.value)}
+        required
+      />
+      <textarea
+        placeholder="Description"
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+        required
+      />
+      <button type="submit">Create Role</button>
     </form>
   );
 }
