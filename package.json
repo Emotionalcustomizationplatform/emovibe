@@ -1,4 +1,3 @@
-
 {
   "name": "emovibe",
   "version": "1.0.0",
@@ -7,16 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "export": "next export"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.10.0",
+    "@supabase/supabase-js": "^2.38.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "framer-motion": "^10.18.0",
     "next": "14.2.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "axios": "^1.6.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.2.2"
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "openai": "^4.57.0"
   }
 }
